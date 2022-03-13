@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box li {
+        width: 200px;
+        padding: 10px 5px;
+        list-style-type: none;
+        border-bottom: 1px solid gray;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="openServerPush()">开启动态实时更新</button>
+    <button onclick="closeServerPush()">关闭此功能功能</button>
+    <h3>动态</h3>
+    <ul id="box"></ul>
+    <script>
+      let es;
+      const box = document.querySelector("#box");
+
+      const openServerPush = () => {
+        es = new EventSource("/sse");
+        // CONNECTING(0)、OPEN(1) 或CLOSED(2)
+        console.log(es.readyState);
+
+        es.addEventListener("dynamicUpdate", (e) => {
+          const li = document.createElement("li");
+          let user = JSON.parse(e.data)
+          li.innerText = `${user.name}: ${user.content}`
+          box.appendChild(li);
+        });
+        
+        es.onopen = () => {
+          console.log("已开启服务器推送。。。");
+        };
+        es.onmessage = (e, me) => {
+          console.log("默认推送:" + e.data);
+        };
+        es.onerror = (e) => {
+          console.log("服务器推送出现错误", e);
+        };
+      };
+      const closeServerPush = () => {
+        if (es) {
+          es.close();
+        }
+      };
+    </script>
+  </body>
+</html>

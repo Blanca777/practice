@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const myiframe = document.createElement("iframe");
+      myiframe.src = "http://localhost:4000/index.html";
+      document.body.appendChild(myiframe);
+      myiframe.onload = () => {
+        console.log("myiframe加载成功");
+        myiframe.contentWindow.postMessage("aaa", "http://localhost:4000");
+      };
+      window.onmessage = (e) => {
+        console.log("这里是a接受到的消息:" + e.data);
+      };
+    </script>
+  </body>
+</html>
