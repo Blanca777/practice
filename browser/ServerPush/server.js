@@ -21,6 +21,7 @@ app.get("/sse", (req, res) => {
   // sse = new SseStream.default(req);
   // sse.pipe(res);
   sse = new stream.Transform({ objectMode: true });
+  contentId = req.headers["last-event-id"] || 0;
   // req.readableObjectMode = true; //对象模式: 流的实现可以使用其他类型的 JavaScript 值（除了 null，它在流中具有特殊用途）
   // req.socket.setKeepAlive(true);
   // req.socket.setNoDelay(true); //创建 TCP 连接时，它将启用 Nagle 算法, Nagle 的算法在数据通过网络发送之前延迟数据。 它试图以延迟为代价来优化吞吐量
@@ -32,6 +33,7 @@ app.get("/sse", (req, res) => {
     // Connection: "keep-alive",
   });
   // res.flushHeaders();
+
   sse.pipe(res);
   sse._transform = (message, encoding, callback) => {
     if (message.comment) sse.push(`: ${message.comment}\n`);
@@ -42,18 +44,34 @@ app.get("/sse", (req, res) => {
     sse.push("\n");
     callback();
   };
+  sse.write({ comment: "ok" });
+  res.on("close", () => {
+    console.log(`client disconnect to server`);
+    sse?.unpipe(res);
+  });
 });
-app.post("/releaseDynamics", (req, res) => {
+app.post("/pushDynamics", (req, res) => {
   const { content } = req.body;
   const message = {
     data: { name: "blanca", content },
     event: "dynamicUpdate", // 事件类型，需要客户端添加对应的事件监听
-    id: ++contentId,
+    id: ++contentId, 
     retry: 10000, // 告诉客户端,如果断开连接后,10秒后再重试连接
   };
-  console.log(message)
   sse?.write(message);
-  res.send("发布成功");
+  res.json({ code: 0, data: "发布成功" }).end();
+});
+app.post("/cutLink", (req, res) => {
+  sse.end();
+  res.json({ code: 0, data: "切断成功" }).end();
+});
+app.post("/pauseLink", (req, res) => {
+  sse?.write({
+    event: "pause",
+    id: ++contentId,
+    data: Date.now() + 10*1000 + '', // 规定重传时间点
+  });
+  res.json({ code: 0, data: "暂停成功" }).end();
 });
 app.listen(3000, () => {
   console.log("server open in 3000");
