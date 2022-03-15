@@ -9,12 +9,12 @@ button {
   height: 30px;
   background-color: transparent;
   border: none;
-  background-image: url('./assetsImg/button_1.png');
+  background-image: url('https://assets.asaki-m.com/button_1.png');
   background-size: cover;
 }
 
 button:active {
-  background-image: url('./assetsImg/button_2.png');
+  background-image: url('https://assets.asaki-m.com/button_2.png');
 }
 
 img {
