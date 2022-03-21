@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Mode</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <div>
+    <!-- 这里是切换的按钮 -->
+    <img src="../icons/sum.svg" id="theme">
+  </div>
+  <main class="content">
+    <h1>CSS variable</h1>
+    <p>abcdefghijklmnopqrstuvwxyz,abcdefghijklmnopqrstuvwxyz</p>
+    <p>abcdefghijklmnopqrstuvwxyz</p>
+    <p>abcdefghijklmnopqrstuvwxyz</p>
+    <p>abcdefghijklmnopqrstuvwxyz</p>
+    <button>button</button>
+  </main>
+</body>
+<script>
+  const themebtn = document.getElementById('theme')
+  themebtn.addEventListener('click', () => {
+    const body = document.body
+    // 判断当前是否是黑夜模式，从而切换模式
+    if (Array.from(body.classList).indexOf('dark') !== -1) {
+      body.classList.remove('dark')
+      themebtn.src = '../icons/sum.svg'
+    } else {
+      body.classList.add('dark')
+      themebtn.src = '../icons/moon.svg'
+    }
+  })
+</script>
+
+</html>

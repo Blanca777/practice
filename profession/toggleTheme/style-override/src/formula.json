@@ -1,0 +1,6 @@
+{
+  "bgColor0": "color(primary contrast(50%))",
+  "bgColor1": "color(primary contrast(80%))",
+  "textColor": "color(primary tint(50%))",
+  "grey1": "color(primary tint(50%))"
+}

@@ -1,0 +1,35 @@
+:root {
+  --bg-color-0: #fff;
+  --bg-color-1: #fff;
+  --text-color: #333;
+  --grey-1: #1c1f23;
+}
+
+:root .dark {
+  --bg-color-0: #16161a;
+  --bg-color-1: #35363c;
+  --text-color: #fff;
+  --grey-1: #f9f9f9;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color-0);
+  transition: all 0.3s;
+}
+
+.content {
+  padding: 20px;
+  background-color: var(--bg-color-1);
+  color: var(--text-color);
+}
+
+.content button {
+  width: 100px;
+  height: 30px;
+  background-color: var(--bg-color-1);
+  color: var(--text-color);
+  border: 1px solid var(--grey-1);
+  outline: none;
+}
