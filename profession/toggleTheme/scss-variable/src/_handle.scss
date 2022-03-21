@@ -1,0 +1,38 @@
+@mixin themeify {
+
+  // 遍历_variable.scss定义的主题
+  @each $theme-name,
+  $theme-map in $themes {
+    // 将每个主题提升为全局变量
+    $theme-map: $theme-map !global;
+
+    // 绑定某个主题下的样式内容
+    [data-theme="#{$theme-name}"] & {
+      @content
+    }
+  }
+}
+
+// 定义一个通过key获取主题变量的值函数
+@function themed($key) {
+  @return map-get($theme-map, $key)
+}
+
+// 下面这些mixin绑定在那个主题就那种颜色
+@mixin bgColor($color) {
+  @include themeify {
+    background-color: themed($color);
+  }
+}
+
+@mixin textColor($color) {
+  @include themeify {
+    color: themed($color);
+  }
+}
+
+@mixin borderColor($color) {
+  @include themeify {
+    border-color: themed($color);
+  }
+}
