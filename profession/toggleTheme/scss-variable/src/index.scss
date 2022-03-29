@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s;
+  @include bgColor('bg-color-0');
+}
+
+.content {
+  padding: 20px;
+  @include bgColor('bg-color-1');
+  @include textColor('text-color');
+
+
+  button {
+    width: 100px;
+    height: 30px;
+    border: 1px solid;
+    outline: none;
+    @include bgColor('bg-color-0');
+    @include borderColor('grey-1');
+    @include textColor('text-color');
+
+  }
+}

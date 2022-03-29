@@ -1,0 +1,29 @@
+body {
+  width: 100vw;
+  display: flex;
+}
+
+button {
+  color: #fff;
+  width: 100px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  background-image: url('https://assets.asaki-m.com/button_1.png');
+  background-size: cover;
+}
+
+button:active {
+  background-image: url('https://assets.asaki-m.com/button_2.png');
+}
+
+img {
+  width: 500px;
+  height: 300px;
+  margin-top: 20px;
+  display: block;
+}
+
+.box {
+  display: flex;
+}

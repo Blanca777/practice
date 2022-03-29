@@ -1,0 +1,13 @@
+{
+  "name": "node-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "serve": "node server.js"
+  },
+  "dependencies": {
+    "etag": "^1.8.1",
+    "fresh": "^0.5.2"
+  }
+}
