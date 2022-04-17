@@ -1,0 +1,15 @@
+.vlist-container {
+  overflow-y: auto;
+  width: 100vw;
+  margin: 0 auto;
+  background-color: #f5f5f5;
+
+}
+
+.v-phantom {
+  position: relative;
+}
+
+.v-item {
+  border-bottom: 1px solid;
+}

@@ -1,0 +1,13 @@
+.link {
+  margin: 0 20px;
+  font-size: 30px;
+}
+
+.view {
+  margin-top: 50px;
+  display: block;
+}
+
+body {
+  background-color: #eee;
+}
