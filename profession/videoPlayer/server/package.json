@@ -1,0 +1,17 @@
+{
+  "name": "video-stream",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "serve": "node index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "easy-file-uploader-server": "^1.0.5",
+    "express": "^4.17.3",
+    "multer": "^1.4.4"
+  }
+}

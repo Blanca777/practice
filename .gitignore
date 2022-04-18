@@ -105,3 +105,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+# video demo file
+profession/videoPlayer/server/public/mergedUploadFile
+profession/videoPlayer/server/public/tempUploadFile
