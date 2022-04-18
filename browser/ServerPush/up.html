@@ -12,18 +12,19 @@
     <script>
       const Content = document.getElementById("content");
       const releaseDynamics = () => {
-        fetch(
-          "http://localhost:3000/releaseDynamics",
-          {
-            method: "POST",
-            headers:{
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ content: Content.value }),
-          }
-        ).then(res=>{
-          console.log(res)
+        fetch("http://localhost:3000/pushDynamics", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ content: Content.value }),
         })
+          .then((res) => {
+            return res.json();
+          })
+          .then((res) => {
+            console.log(res);
+          });
       };
     </script>
   </body>
