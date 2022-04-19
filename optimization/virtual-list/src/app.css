@@ -1,9 +1,8 @@
 .vlist-container {
   overflow-y: auto;
-  width: 100vw;
+  width: 90vw;
   margin: 0 auto;
   background-color: #f5f5f5;
-
 }
 
 .v-phantom {
@@ -11,5 +10,8 @@
 }
 
 .v-item {
+  position: absolute;
   border-bottom: 1px solid;
+  left: 0;
+  right: 0;
 }
